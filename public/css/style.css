@@ -1,0 +1,58 @@
+.body{
+    display: flex;
+}
+.navbar{
+    height: 5rem;
+   background-color: antiquewhite !important;
+   padding: 2rem !important;
+  
+}
+.navbar-brand{
+    color: brown !important;
+    font-size: 2rem; 
+    
+   
+}
+.nav-link{
+    padding: 1rem !important;
+    color: brown !important;
+}
+.nav-link:hover{
+ color: black !important;
+}
+.f-info{
+    display: flex;
+    
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    background-color: antiquewhite;
+    line-height: 2rem;
+    margin-bottom: 0;
+}
+.card{
+    
+    border-radius: 2rem !important;
+    margin-bottom: 2rem !important;
+    margin-top: 1rem;
+}
+
+
+.card-img-top{
+    width: 100% !important;
+    border-radius: 1rem !important;
+    object-fit: cover !important;
+}
+.card-body{
+    font-size: 400;
+    padding-top: 0 !important;
+
+}
+.card-text{
+    color: black;
+    margin-top: 0 !important;    
+}
+.listing-link{
+    text-decoration: none;
+}

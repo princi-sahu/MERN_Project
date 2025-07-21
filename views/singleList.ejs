@@ -1,0 +1,106 @@
+<% layout("/layout/boilerplate") %>
+<!DOCTYPE html>
+<html>
+    <head>
+     <title>listing</title>
+     <style>
+      .show-img {
+          width: 200px; /* or any desired width */
+          height: 200px; /* or any desired height */
+          object-fit: cover; /* Optional: Ensures the image is scaled correctly */
+      }
+  </style>
+    </head>
+    <body>
+      <div class="card m-12" style="width: 18rem , ">
+        <img src="<%=list.image.url%>" class="show-img" alt="listing_image" >
+        <div class="card-body">
+          
+          <h5 class="card-title"> List Title: <%=list.title%></h5>
+           <h5 class="card-text"> List Owner: <%=list.owner.username%></h5>  
+          <p class="card-text"> List Description:<%=list.description%>
+          </p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">List Price : <%=list.price%></li>
+          <li class="list-group-item">List Location : <%=list.location%></li>
+          <li class="list-group-item">List Country : <%=list.country%></li>
+        </ul>
+        <div class="card-body">
+          <%if(currUser && currUser._id.equals(list.owner._id)){%>
+       <button class="btn btn-warning mt-1"> <a href="http://localhost:3000/listing/edit/<%=list._id%>" class="card-link" >Edit</a></button>  
+            <form method="POST" action="/listing/<%=list._id%>?_method=DELETE">
+        <button class="btn btn-warning mt-2 "type="submit" >Delete</button>
+       </form>
+       <% }%>
+      </div>
+      <hr>
+      <hr>
+      <% if(currUser){%>
+      <form action="/listing/<%=list._id%>/review" method="post" id="feedbackForm" class="needs-validation"novalidate>
+       
+        <h1>ADD REVIEWS</h1>
+  <fieldset class="starability-slot">
+  <legend> rating:</legend>
+  <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
+  <input type="radio" id="first-rate1" name="rating" value="1" />
+  <label for="first-rate1" title="Terrible">1 star</label>
+  <input type="radio" id="first-rate2" name="rating" value="2" />
+  <label for="first-rate2" title="Not good">2 stars</label>
+  <input type="radio" id="first-rate3" name="rating" value="3" />
+  <label for="first-rate3" title="Average">3 stars</label>
+  <input type="radio" id="first-rate4" name="rating" value="4" />
+  <label for="first-rate4" title="Very good">4 stars</label>
+  <input type="radio" id="first-rate5" name="rating" value="5" />
+  <label for="first-rate5" title="Amazing">5 stars</label>
+</fieldset>
+
+        <div>
+          <label for="message" class="form-label">Comment</label>
+          <textarea type="text" id ="message" class="form-control" name="message" required></textarea>
+          <div class="invalid-feedback">feedback is required</div>
+          
+        </div>
+        
+        <button type="submit" class="btn btn-warning mt-2" >Submit</button>
+       </form>
+
+       <hr>
+       <hr>
+
+      </div>
+      <% }%>
+      <div>
+        <hr>
+        <h1>ALL Reviews</h1>
+        <div class="row">
+        <%for(let review of list.review){%>
+        <div class="card col-4 m-3" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title "><%=review.author.username%></h5>
+          
+            <p class="starability-result card-text" data-rating="<%=review.rating%>"></p>
+              <h6 class="card-text"><%=review.message%></h6>
+  
+            <form method="post"   action="/listing/<%=list._id%>/review/<%=review._id%>?_method=DELETE">
+              <button class="btn btn-dark">Delete</button>
+            </form>
+        </div>
+        </div>
+        <%}%>
+      </div>
+      </div>
+      <script>
+        // JavaScript for custom form validation
+        document.getElementById("feedbackForm").addEventListener("submit", function(event) {
+            let form = event.target;
+            if (!form.checkValidity()) {
+                event.preventDefault();  // Prevent form submission if not valid
+                event.stopPropagation(); // Stop further event propagation
+            }
+            form.classList.add("was-validated"); // Add Bootstrap validation feedback class
+        });
+
+    </script>
+    </body>
+</html>

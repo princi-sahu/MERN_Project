@@ -1,0 +1,37 @@
+<% layout("/layout/boilerplate") %>
+<body>
+     <h1>Edit</h1>
+     <form method="POST" action="/listing/edit/<%=list._id%>?_method=PUT"  class="needs-validation" enctype="multipart/form-data"  novalidate>
+          <div class="row">
+               <div class="col-8">
+
+      <div>
+      <label for="title" class="form-label">Title</label>
+     <input name="title" value="<%=list.title%>" class="form-control">
+     </div>
+     <div>
+     <label for="description" class="form-label">Description</label>
+     <textarea name="description" rows="3" cols="20" class="form-control"><%=list.description%></textarea>
+     </div>
+     <label for="image" class="form-label">Upload a new Image</label>
+     <input name="image" type="file"    placeholder="<%-list.image.url%>"  class="form-control" required>
+     </div>
+      <div>
+ <label for="price" class="form-label">Price</label>
+     <input name="price" value="<%=list.price%>" class="form-control">
+     </div>
+     <div>
+ <label for="location" class="form-label">Location</label>
+     <input name="location" value="<%=list.location%>" class="form-control">
+</div>
+     <div>
+          <label for="country" class="form-label">Country</label>
+     <input name="country" value="<%=list.country%>"  class="form-control">
+</div>
+</div>
+</div>
+       
+     <button class="btn btn-dark"  style="margin-top: 2rem;" >ADD</button>
+    </form>
+    </body>
+    </html>

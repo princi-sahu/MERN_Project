@@ -1,0 +1,67 @@
+<% layout("/layout/boilerplate") %>
+    <body>
+     <h1>Add New One</h1>
+     <form method="POST" id="listingForm"action="/listing/add" class="needs-validation" enctype="multipart/form-data"      novalidate>
+        <div class="row">
+            <div class="col-8">
+        <div>
+     <label for="title" class="form-label" >Title</label>
+     <input name="title" placeholder="Enter Title name " class="form-control" type="text" required>
+     <div class="invalid-feedback">please provide the information</div>
+     <div class="valid-feedback">"Thank you! Your information has been received."</div>
+
+    </div>
+     
+     <div>
+        <label for="description" class="form-label">Description</label>
+     <textarea name="description" class="form-control" placeholder="description" type="text" required></textarea>
+     <div class="invalid-feedback">please provide the  information</div>
+      <div class="valid-feedback">"Thank you! Your information has been received."</div>
+    </div>
+    
+   
+     <div>
+        <label for="price" class="form-label">Price</label>
+     <input name="price" placeholder="Enter price" class="form-control" type="text" required>
+     <div class="invalid-feedback">please provide the information</div>
+     <div class="valid-feedback">"Thank you! Your information has been received."</div>
+    </div>
+    
+     <div>
+        <label for="location" class="form-label">Location</label>
+     <input name="location" placeholder="Enter location" class="form-control" type="text" required>
+     <div class="invalid-feedback">please provide the  information</div>
+     <div class="valid-feedback">"Thank you! Your information has been received."</div>
+    </div>
+    
+    <div>
+        <label for="lmage" class="form-label">Upload a image</label>
+     <input name="image" type="file"    placeholder="image"  class="form-control" required>
+     <div class="invalid-feedback">please provide the  information</div>
+     <div class="valid-feedback">"Thank you! Your information has been received."</div>
+    </div>
+    
+     <div>
+     <label for="country" class="form-label">Country</label>
+     <input name="country" placeholder="Enter the country name" class="form-control" required>
+     <div class="invalid-feedback">please provide the information</div> 
+     <div class="valid-feedback">"Thank you! Your information has been received."</div> 
+    </div>
+</div>
+</div>
+    
+     <button class="btn btn-dark"  style="margin-top: 2rem;">ADD</button>
+    </form>
+    <script>
+      // JavaScript for custom form validation
+      document.getElementById("listingForm").addEventListener("submit", function(event) {
+          let form = event.target;
+          if (!form.checkValidity()) {
+              event.preventDefault();  // Prevent form submission if not valid
+              event.stopPropagation(); // Stop further event propagation
+          }
+          form.classList.add("was-validated"); // Add Bootstrap validation feedback class
+      });
+  </script>
+    </body>
+</html>

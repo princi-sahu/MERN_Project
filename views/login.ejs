@@ -1,0 +1,36 @@
+<% layout("/layout/boilerplate") %>
+    <body>
+        <form  method="post" action="/login" id="loginForm"  class="needs-validation mt-5 mb-5" novalidate >
+            <div class="row">
+                <div class="col-8">
+                    <div>
+                      <label for="username" class="form-label"  >Username</label>
+                        <input name="username" placeholder="Enter username " class="form-control" required>
+                        <div class="invalid-feedback">please provide the information</div>
+                       </div>
+                       
+                        
+                             <div>
+                                <label for="password" class="form-label"  >Password</label>
+                                  <input type="password" name="password" placeholder="Enter password " class="form-control" required>
+                                  <div class="invalid-feedback">please provide the information</div>
+                                 </div>
+
+                                 <button class="btn btn-success mt-3">Login</button>
+                                 </div>
+                                 </div>
+        </form>
+    </body>
+    <script>
+        // JavaScript for custom form validation
+        document.getElementById("login").addEventListener("submit", function(event) {
+            let form = event.target;
+            if (!form.checkValidity()) {
+                event.preventDefault();  // Prevent form submission if not valid
+                event.stopPropagation(); // Stop further event propagation
+            }
+            form.classList.add("was-validated"); // Add Bootstrap validation feedback class
+        });
+    </script>
+      </body>
+  </html>

@@ -1,0 +1,20 @@
+<% layout("/layout/boilerplate") %> 
+    <body>
+     <h1>All Listings</h1>
+    <div class=" cards row row-cols-lg-4 row-cols-lg-3  row-cols-lg-2  ">
+    <% for(let i=0;i<list.length;i++){ %>
+      <a href="/listing/<%= list[i]._id %>" class="listing-link">
+    <div class="card " >
+      <img src="<%=list[i].image.url%>" class="card-img-top" alt="..."  style="height: 20rem;">
+      <div class="card-body">
+        
+        <p class="card-text" ><b><%=list[i].title %></b><br>
+          Price: ₹<%= (list[i].price && !isNaN(list[i].price)) ? list[i].price.toLocaleString("en-IN") : "N/A" %> /night</p>
+      </div>
+    </div>
+  </a>
+    <% } %>
+  </div>
+    
+    </body>
+</html>
